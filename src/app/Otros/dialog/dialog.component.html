@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Elminar Médico</h1>
+<div mat-dialog-content>
+  <p>Confirme el rut del medico a eliminar</p>
+    <p> rut : </p>
+    <input matInput [(ngModel)]="data.rut">
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-dialog-close="false">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.rut" cdkFocusInitial mat-dialog-close="true">Confirmar</button>
+</div>

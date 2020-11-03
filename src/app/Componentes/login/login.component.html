@@ -1,0 +1,17 @@
+<div class="container">
+  <form [formGroup]="profileForm">
+  
+    <label >
+      Nombre de usuario:
+      <input required type="text" formControlName="nombre_usuario">
+    </label>
+  
+    <label >
+      Contraseña:
+      <input ng-keyup="event==13 login()"  required type="password" formControlName="contrasena">
+    </label>
+  
+  </form>
+
+  <button (click)="login()" >Iniciar Sesión</button>
+</div> 
