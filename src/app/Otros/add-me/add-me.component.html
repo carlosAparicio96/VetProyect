@@ -1,0 +1,38 @@
+<div class="container">
+    <form [formGroup]="profileForm">
+      <label >
+        Rut:
+        <input required type="text" formControlName="rut">
+      </label>
+    
+      <label >
+        Apellidos:
+        <input required type="text" formControlName="apellido">
+      </label>
+  
+      <label >
+        Nombre:
+        <input required type="text" formControlName="nombre">
+      </label>
+  
+      <label >
+        Especialidad:
+        <input required type="text" formControlName="especialidad">
+      </label>
+  
+      <label >
+        Correo:
+        <input required type="text" formControlName="correo">
+      </label>
+  
+      <label >
+        Telefono:
+        <input required type="text" formControlName="telefono">
+      </label>
+    
+    </form>
+  
+    <button (click)=addMedico() >Confirmar</button>
+    <button (click)=back() >Cancelar</button>
+
+  </div> 

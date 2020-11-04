@@ -17,7 +17,7 @@ export class MedicosComponent implements OnInit {
   constructor(private router: Router, private vetService: VetService, private _location: Location, public dialog: MatDialog) { }
 
   medicos=[]
-  headers = ["rut", "nombre", "especialidad", "correo", "telefono"];
+  headers = ["rut","apellido","nombre", "especialidad", "correo", "telefono"];
   
   //para open dialog()
   rut:string;

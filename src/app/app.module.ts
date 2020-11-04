@@ -20,8 +20,7 @@ import { SesionesComponent } from './Componentes/sesiones/sesiones.component';
 import { ExamenesComponent } from './Componentes/examenes/examenes.component';
 import { ConsultasComponent } from './Componentes/consultas/consultas.component';
 import { DialogComponent } from './Otros/dialog/dialog.component';
-/* import { MedicoAddComponent } from './otros/medico-add/medico-add.component'; */
-
+import { AddMeComponent } from './Otros/add-me/add-me.component';
 
 import { MatButtonModule, } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
@@ -29,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -46,7 +46,7 @@ import { MatSelectModule } from '@angular/material/select';
     ExamenesComponent,
     ConsultasComponent,
     DialogComponent,
-    /* MedicoAddComponent */
+    AddMeComponent,
   ],
   entryComponents:[DialogComponent],
   imports: [

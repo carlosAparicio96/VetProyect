@@ -144,7 +144,7 @@ export class VetService {
         )
     })
   }
-
+  
   borrarMedico (data) {
     console.log("vet service borrar medico",data)
     return new Promise((resolve, reject) => {
@@ -169,6 +169,29 @@ export class VetService {
   })
 }
 
+agregarMedico (data) {
+  console.log("vet service agregar medico",data)
+  return new Promise((resolve, reject) => {
+  this.http.post(
+    `${apiUrl}medico`,data
+  )
+    .subscribe(
+      (response: any) => {
+        try {
+          console.log('response', response)
+          resolve(response)
+        } catch (error) {
+          console.log('error1', error)
+          reject(error)
+        }
+      },
+      error => {
+        console.log('error2', error)
+        reject(error)
+      }
+    )
+})
+}
 
   //-----FIN-----//
 }
