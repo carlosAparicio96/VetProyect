@@ -11,6 +11,10 @@ import { MenuComponent } from './Componentes/menu/menu.component';
 import { PacientesComponent } from './Componentes/pacientes/pacientes.component';
 import { SesionesComponent } from './Componentes/sesiones/sesiones.component';
 import { AddMeComponent } from './Otros/add-me/add-me.component';
+import { CrearExamenComponent } from './Otros/crear-examen/crear-examen.component';
+import { EditaMedicoComponent } from './Otros/edita-medico/edita-medico.component';
+import { ExEditComponent } from './otros/ex-edit/ex-edit.component';
+import { ListaExamenesComponent } from './Otros/lista-examenes/lista-examenes.component';
 
 const routes: Routes = [
   {
@@ -34,6 +38,10 @@ const routes: Routes = [
     component: AddMeComponent
   },
   {
+    path:'edita-medico',
+    component: EditaMedicoComponent
+  },
+  {
     path:'pacientes',
     component: PacientesComponent
   },
@@ -53,6 +61,18 @@ const routes: Routes = [
     path:'consultas',
     component: ConsultasComponent
   },
+  {
+    path:'examen-edit',
+    component: ExEditComponent
+  },
+  {
+    path:'lista-examenes',
+    component: ListaExamenesComponent
+  },
+  {
+    path:'crear-examen',
+    component: CrearExamenComponent
+  }
 
 ];
 

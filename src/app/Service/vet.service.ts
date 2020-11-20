@@ -9,6 +9,10 @@ const apiUrl = "http://localhost:3000/usuario/"
 export class VetService {
 
   constructor(private http: HttpClient) { }
+
+  uploadFile(formData){
+    return this.http.post(`${apiUrl}subir`, formData);
+  }
   
 
   iniciarSesion(data) {
@@ -191,6 +195,173 @@ agregarMedico (data) {
       }
     )
 })
+}
+
+buscarMedico(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}buscarMedico`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+editarMedico(data){
+  console.log('edit medico',data)
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl} `,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+//-------EXAMEN-------
+getExamen (data) {
+  console.log("Codigo Examen",data)
+  return new Promise((resolve, reject) => {
+  this.http.post(
+    `${apiUrl}getExamen`,data
+  )
+    .subscribe(
+      (response: any) => {
+        try {
+          console.log('response', response)
+          resolve(response)
+        } catch (error) {
+          console.log('error1', error)
+          reject(error)
+        }
+      },
+      error => {
+        console.log('error2', error)
+        reject(error)
+      }
+    )
+})
+}
+
+addFM(data){
+  console.log("form",data)
+  return new Promise((resolve, reject) => {
+  this.http.put(
+    `${apiUrl}fechaTM`,data
+  )
+    .subscribe(
+      (response: any) => {
+        try {
+          console.log('response', response)
+          resolve(response)
+        } catch (error) {
+          console.log('error1', error)
+          reject(error)
+        }
+      },
+      error => {
+        console.log('error2', error)
+        reject(error)
+      }
+    )
+  })
+
+}
+addFRM(data){
+  console.log("form",data)
+  return new Promise((resolve, reject) => {
+  this.http.put(
+    `${apiUrl}fechaRM`,data
+  )
+    .subscribe(
+      (response: any) => {
+        try {
+          console.log('response', response)
+          resolve(response)
+        } catch (error) {
+          console.log('error1', error)
+          reject(error)
+        }
+      },
+      error => {
+        console.log('error2', error)
+        reject(error)
+      }
+    )
+  })
+}
+
+finExamen(data){
+  return new Promise((resolve, reject) => {
+    this.http.put(
+      `${apiUrl}finExamen`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+    })
+
+}
+
+listaExamenes(){
+  return new Promise((resolve, reject) => {
+    this.http.get(
+      `${apiUrl}listaExamen`
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+
 }
 
   //-----FIN-----//

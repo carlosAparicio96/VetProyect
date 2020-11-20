@@ -1,0 +1,35 @@
+<div class="container" style="width:25%; height: 20px; background-color: #ffffff00;"></div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Paciente</th>
+            <th>Dueño</th>
+            <th>Examen</th>
+            <th>Estado</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of examenes ; let i =index ">
+            <td *ngFor = "let column of headers">
+                <div *ngIf="(column=='link' && estados[i]==2)">
+                    <a href="{{e[column]}}">Examen</a>
+                </div>
+                <div *ngIf="(column=='estado')">
+                    <div *ngIf="estados[i]==1">
+                        <a>En proceso</a>
+                    </div>
+                    <div *ngIf="estados[i]==2">
+                        <a>Finalizado</a>
+                    </div>
+                </div>
+                <div *ngIf="(column!='link' && column!='estado')">
+                    {{e[column]}}
+                </div>
+            </td>
+          </tr> 
+        </tbody>
+      </table>
+</div>

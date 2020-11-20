@@ -28,7 +28,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-
+import { ExEditComponent } from './otros/ex-edit/ex-edit.component';
+import { EditaMedicoComponent } from './Otros/edita-medico/edita-medico.component';
+import { AngularFireStorageModule } from '@angular/fire/storage'
+import { AngularFireModule } from '@angular/fire';
+import { ConsultaExamenComponent } from './Cliente/consulta-examen/consulta-examen.component'
+import { ListaExamenesComponent } from './Otros/lista-examenes/lista-examenes.component';
 
 
 
@@ -47,6 +52,10 @@ import { MatSelectModule } from '@angular/material/select';
     ConsultasComponent,
     DialogComponent,
     AddMeComponent,
+    ExEditComponent,
+    EditaMedicoComponent,
+    ConsultaExamenComponent,
+    ListaExamenesComponent
   ],
   entryComponents:[DialogComponent],
   imports: [
@@ -62,8 +71,18 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSelectModule
-
+    MatSelectModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyDRcYqGZcjPkUiIAHh7aY4mzEJWEaTjecw",
+      authDomain: "veterinaria-1aa69.firebaseapp.com",
+      databaseURL: "https://veterinaria-1aa69.firebaseio.com",
+      projectId: "veterinaria-1aa69",
+      storageBucket: "veterinaria-1aa69.appspot.com",
+      messagingSenderId: "299371967821",
+      appId: "1:299371967821:web:300721168a6bf87ffeb304",
+      measurementId: "G-T4LX0HSBVB"
+    }),
+    AngularFireStorageModule
   ],
   providers: [VetService],
   bootstrap: [AppComponent]

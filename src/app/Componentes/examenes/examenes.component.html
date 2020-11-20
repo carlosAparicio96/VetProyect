@@ -1,1 +1,138 @@
-<p>examenes works!</p>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+<div class="container">
+  <button (click)="crearExamen()">Crear Examen</button>
+
+    <form [formGroup]="profileForm">
+        <label >
+        Codigo: 
+          <input required type="text" formControlName="codigo" style="text-transform: uppercase;">
+        </label>
+      </form>
+      <div  class="container" *ngIf="respuesta==0">
+        <button (click)=buscar() >Buscar</button>
+      </div>
+      <div *ngIf="respuesta==1" >
+        <button (click)="cancelar()">Buscar Otro</button>
+      </div>
+</div>
+
+  <div *ngIf="respuesta==1" class="container ">
+    <div class="row">
+      <ul class="list-group">
+        <li class="list-group-item">Nombre: {{examen[0].nombre_paciente}}</li>
+        <li class="list-group-item">Especie: {{examen[0].especie}}</li>
+        <li class="list-group-item">Raza: {{examen[0].raza}}</li>
+        <li class="list-group-item">Sexo: {{examen[0].sexo}}</li>
+        <li class="list-group-item">Edad: {{examen[0].edad}}</li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul class="list-group">
+        <li class="list-group-item">Clinica Solicitante: {{examen[0].clinica_solicitante}}</li>
+        <li class="list-group-item">Medico Solicitante: {{examen[0].medico_solicitante}}</li>
+        <li class="list-group-item">Propietario Mascota: {{examen[0].nombre_propietario}}</li>
+        <li class="list-group-item">Correo Propietario: {{examen[0].correo_propietario}}</li>
+        <li class="list-group-item">Fono Propietario: {{examen[0].fono_propietario}}</li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul class="list-group">
+        <div>
+          <div *ngIf="fechaRS==1">
+            <li class="list-group-item">Fecha Recepcion Solicitud: {{examen[0].fecha_recepcionSolicitud.substr(0,10)}}</li>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="fechaTM==1">
+            <li class="list-group-item">Fecha Toma de Muestra: {{examen[0].fecha_tomaMuestra.substr(0,10)}}</li>
+          </div>
+          <div *ngIf="fechaTM==0">
+            <button (click)="toma()">Agregar Fecha de Toma de Muestra</button>
+            <div *ngIf="tomaMuestra==1">
+              <form [formGroup]="fecha">
+                  Día:<input required type="text" placeholder="01" formControlName="day">     
+                  Mes:<input required type="text" placeholder="01" formControlName="month">
+                  Año:<input required type="text" placeholder="2020" formControlName="year">
+              </form>
+              <button (click)="addFMuestra()">Agregar</button>
+            </div>
+          </div>  
+          <div *ngIf="fm==1">
+            <Label>*Fecha Actualizada* : {{date[0].fecha_tomaMuestra}}</Label>
+          </div>  
+        </div>
+        <div>
+          <div *ngIf="fechaRM==1">
+            <li class="list-group-item">Fecha Recepcion Muestra: {{examen[0].fecha_recepcionMuestra.substr(0,10)}}</li>
+          </div>
+          <div *ngIf="fechaRM==0">
+            <button (click)="recepcion()">Agregar Fecha de Recepcion de Muestra</button>
+            <div *ngIf="recepcionMuestra==1">
+              <form [formGroup]="formFecha">
+                  Día:<input required type="text" placeholder="21" formControlName="day">     
+                  Mes:<input required type="text" placeholder="06" formControlName="month">
+                  Año:<input required type="text" placeholder="2020" formControlName="year">
+              </form>
+              <button (click)="addFRM()">Agregar</button>
+            </div>
+          </div> 
+          <div *ngIf="rm==1">
+            <li>*Fecha Actualizada* : {{date2[0].fecha_recepcionMuestra}}</li>
+          </div>
+          <div *ngIf="estado==2">
+            <li><a href="{{examen[0].link}}">Examen</a></li>
+          </div>
+          
+        </div>
+
+      </ul>
+    </div>
+    
+  <!-- Subir Archivo -->
+
+  <body>
+    <script src="/__/firebase/8.0.1/firebase-app.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-auth.js"></script>
+    <script src="/__/firebase/8.0.1/firebase-firestore.js"></script>
+  </body>
+
+  <div *ngIf="estado==1 && rm==1 && fm==1" >
+    <div *ngIf="terminar==0" class="row">
+      <label for="image">Archivo de examen: </label>
+      <input type="file" (change)="upload($event)">
+      <button (click)="uploadImage()">Subir Imagen</button>
+    </div>
+    <div *ngIf="terminar==1">
+      <label>*Archivo Subido</label>
+      <Button data-toggle="modal" data-target="#modal1">Finalizar</Button>
+    </div>
+  </div>
+
+    <!-- modal finalizar -->
+    <div class="modal fade" id="modal1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-tittle">Finalizar proceso de examen</h5>
+          </div>
+
+          <div class="modal-loby">
+            Al aceptar, se enviara un mail al correo del propietario "{{examen[0].correo_propietario}}" indicando que esta disponible su examen.
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secundaty" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="finalizar()">Aceptar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<div class="container" *ngIf="lista==0">
+  <app-lista-examenes></app-lista-examenes>
+</div>
+
+<!-- <input place holder="{{examen[0].nombre_paciente}}"> -->
