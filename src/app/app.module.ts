@@ -28,14 +28,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { ExEditComponent } from './otros/ex-edit/ex-edit.component';
 import { EditaMedicoComponent } from './Otros/edita-medico/edita-medico.component';
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { AngularFireModule } from '@angular/fire';
-import { ConsultaExamenComponent } from './Cliente/consulta-examen/consulta-examen.component'
 import { ListaExamenesComponent } from './Otros/lista-examenes/lista-examenes.component';
-
-
+import { ExCrearComponent } from './Otros/ex-crear/ex-crear.component';
+import { CliCrearComponent } from './Otros/cli-crear/cli-crear.component';
+import { CliListaComponent } from './Otros/cli-lista/cli-lista.component';
+import { PasCrearComponent } from './Otros/pas-crear/pas-crear.component';
+import { SesCrearComponent } from './Otros/ses-crear/ses-crear.component';
+import { PasListaComponent } from './Otros/pas-lista/pas-lista.component';
+import { PasCrear2Component } from './Otros/pas-crear2/pas-crear2.component';
+import { SesListaComponent } from './Otros/ses-lista/ses-lista.component';
+import { SesCrear2Component } from './Otros/ses-crear2/ses-crear2.component';
 
 @NgModule({
   declarations: [
@@ -52,10 +57,17 @@ import { ListaExamenesComponent } from './Otros/lista-examenes/lista-examenes.co
     ConsultasComponent,
     DialogComponent,
     AddMeComponent,
-    ExEditComponent,
     EditaMedicoComponent,
-    ConsultaExamenComponent,
-    ListaExamenesComponent
+    ListaExamenesComponent,
+    ExCrearComponent,
+    CliCrearComponent,
+    CliListaComponent,
+    PasCrearComponent,
+    SesCrearComponent,
+    PasListaComponent,
+    PasCrear2Component,
+    SesListaComponent,
+    SesCrear2Component
   ],
   entryComponents:[DialogComponent],
   imports: [

@@ -12,18 +12,17 @@ import { Location } from '@angular/common';
 export class MenuComponent implements OnInit {
 
   constructor(private router: Router, private vetService: VetService, private _location: Location) {
+ 
+   }
 
-    var token = JSON.parse(localStorage.getItem("usuario"));
+   
+  ngOnInit(){
+/*     var token = JSON.parse(localStorage.getItem("usuario"));
     console.log('inicio menu', token);
     if(token==null){
       alert('Debe iniciar sesión')
       this._location.back();
-    }
-    
-   }
-
-   
-  ngOnInit(): void {
+    } */
   }
 
 }

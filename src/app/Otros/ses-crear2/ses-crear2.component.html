@@ -1,0 +1,35 @@
+<div class="container">
+    <h3>Nueva Sesión</h3>
+        <form [formGroup]="newSesion">
+            <label >
+                Titulo:
+              <input required type="text" formControlName="titulo">
+            </label>
+          
+            <label >
+              Observaciones: 
+              <input required type="text" formControlName="observaciones">
+            </label>
+        
+            <label >
+              Receta:
+              <input required type="text" formControlName="receta">
+            </label>
+        
+            <label >
+              Rut Medico:
+              <input required type="text" formControlName="rut_medico">
+            </label>
+
+            <label >
+                id paciente:
+                <input required type="text" formControlName="id_paciente">
+              </label>
+    
+          </form>
+    
+          <div class="container">
+            <button (click)="cancelar()">Cancelar</button>
+            <button (click)="crear()">Crear</button>
+        </div>
+    </div>

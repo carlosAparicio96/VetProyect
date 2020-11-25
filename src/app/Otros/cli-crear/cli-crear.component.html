@@ -1,0 +1,40 @@
+
+<div class="container">
+    <form [formGroup]="newCliente">
+        <label >
+            Rut:
+          <input required type="text" formControlName="rut">
+        </label>
+      
+        <label >
+          Nombre:
+          <input required type="text" formControlName="nombre">
+        </label>
+    
+        <label >
+          Apellido:
+          <input required type="text" formControlName="apellido">
+        </label>
+    
+        <label >
+          Correo:
+          <input required type="text" formControlName="correo">
+        </label>
+    
+        <label >
+          Telefono:
+          <input required type="text" formControlName="telefono">
+        </label>
+        
+        <label>
+            Direccion:
+            <input required type="text" formControlName="direccion">
+        </label>
+
+      </form>
+
+      <div class="container">
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="crear()">Crear</button>
+    </div>
+</div>

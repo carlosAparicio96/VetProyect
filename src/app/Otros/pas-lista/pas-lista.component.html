@@ -1,0 +1,31 @@
+<div  class="container">
+    <button (click)="crearPaciente()">Crear nuevo Paciente</button>
+
+    <div class="container" style="width:25%; height: 20px; background-color: #ffffff00;"></div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Actualizacion</th>
+                <th>Perfil</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let p of pacientes; let i =index">
+                <td *ngFor = "let column of headers">
+                    <div *ngIf="(column!='ultima_actualizacion')">
+                        {{p[column]}}
+                    </div>
+                    <div *ngIf="(column=='ultima_actualizacion')">
+                        {{p[column].substr(0,10)}}
+                    </div>
+                </td>
+                <td><button (click)="paciente(i)">Ir</button></td>
+            </tr> 
+            </tbody>
+        </table>
+    </div>
+</div>

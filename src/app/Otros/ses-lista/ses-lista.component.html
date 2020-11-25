@@ -1,0 +1,26 @@
+<div  class="container">
+    <button (click)="crearSesion()">Crear nueva sesión</button>
+
+    <div class="container" style="width:25%; height: 20px; background-color: #ffffff00;"></div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Fecha</th>
+                <th>Medico</th>
+                <th>Paciente</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let s of sesiones; let i =index; ">
+                <td *ngFor = "let column of headers">
+                    <div *ngIf="column!='fecha'">{{s[column]}}</div>
+                    <div *ngIf="column=='fecha'">{{s[column].substr(0,10)}}</div>
+                </td>
+                <td><button (click)="sesion(i)">Ir</button></td>
+            </tr> 
+            </tbody>
+        </table>
+    </div>
+</div>

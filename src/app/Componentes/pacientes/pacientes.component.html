@@ -1,1 +1,106 @@
-<p>pacientes works!</p>
+<div class="container">
+    <h2>
+        {{paciente[0].nombre}}
+    </h2>
+    <ul>
+        <li>Especie: {{paciente[0].especie}}</li>
+        <li>Raza: {{paciente[0].raza}}</li>
+        <li>Edad {{paciente[0].edad}}</li>
+        <li>Sexo: {{paciente[0].Sexo}}</li>
+        <li>Peso: {{paciente[0].peso}} Kg</li>
+        <li>Enfermedades: {{paciente[0].enfermedades}}</li>
+        <li>Tratamientos: {{paciente[0].tratamientos}}</li>
+    </ul>
+</div>
+
+<h3 class="container">----------------------------------------------------------</h3>
+
+<div class="container">
+    <h3>Sesiones registradas</h3>
+</div>
+
+<div *ngIf="si==0" class="container">
+    <label>*El Paciente no registra sesiones pasadas!!</label>
+</div>
+<div *ngIf="si==1" class="container">
+    <div class="container" style="width:25%; height: 20px; background-color: #ffffff00;"></div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Fecha</th>
+                <th>Detalle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let s of sesiones; let i =index">
+                <td *ngFor = "let column of headers">
+                    <div *ngIf="(column=='titulo')">
+                        {{s[column]}}
+                    </div>
+                    <div *ngIf="(column=='fecha')">
+                        {{s[column].substr(0,10)}}
+                    </div>                    
+                </td>
+                <td><button (click)="sesion(i)">Ir</button></td>
+            </tr> 
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <button (click)="crearSesion()">Crear nueva sesion</button>
+</div>
+
+
+<h3>----------------------------------------------------------</h3>
+
+<div *ngIf="sesiones.length==0" class="container">
+    <button type="button" data-toggle="modal" data-target="#modal2">Eliminar este paciente</button>
+</div>
+<div *ngIf="sesiones.length!=0" class="container">
+    <button type="button" data-toggle="modal" data-target="#modal1">Eliminar este paciente</button>
+</div>
+
+  <div class="modal fade" id="modal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-tittle">Eliminar Paciente</h2>
+        </div>
+
+        <div class="modal-loby">
+            <p>Esta a punto de eliminar este perfil, al aceptar se borrar del sistema junto a las sesiones adjuntas al paciente</p>
+        </div>
+
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="eliminarSin()" data-dismiss="modal">SI</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-tittle">Eliminar Paciente</h2>
+        </div>
+
+        <div class="modal-loby">
+            <p>Esta a punto de eliminar este perfil, al aceptar se borrar del sistema junto a las sesiones adjuntas al paciente</p>
+        </div>
+
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="eliminar()" data-dismiss="modal">SI</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

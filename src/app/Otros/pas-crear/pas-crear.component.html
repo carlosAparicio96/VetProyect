@@ -1,0 +1,53 @@
+
+<div class="container">
+    <form [formGroup]="newPaciente">
+        <label >
+         Nombre:
+          <input required type="text" formControlName="nombre">
+        </label>
+      
+        <label >
+          Especie:
+          <input required type="text" formControlName="especie">
+        </label>
+
+        <label >
+            Raza:
+            <input required type="text" formControlName="raza">
+          </label>
+    
+        <label >
+          Edad:
+          <input required type="text" formControlName="edad" placeholder="11 meses">
+        </label>
+    
+        <label >
+          Sexo:
+          <input required type="text" formControlName="Sexo" placeholder="M o H">
+        </label>
+    
+        <label >
+          Peso:
+          <input required type="text" formControlName="peso"> Kgs
+        </label>
+        
+        <label>
+            Enfermedades:
+            <input required type="text" formControlName="enfermedades">
+        </label>
+        <label>
+            Tratamientos:
+            <input required type="text" formControlName="tratamientos">
+        </label>
+        <label>
+            Rut Propietario:
+            <input required type="text" formControlName="rut_cliente" value="123">
+        </label>
+
+      </form>
+
+      <div class="container">
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="crear()">Crear</button>
+    </div>
+</div>

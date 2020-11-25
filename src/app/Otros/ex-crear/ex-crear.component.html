@@ -1,0 +1,90 @@
+<div class="container">
+    <form [formGroup]="profileForm">
+        <label >
+            Nombre Paciente:
+          <input required type="text" formControlName="nombre_paciente">
+        </label>
+      
+        <label >
+          Especie:
+          <input required type="text" formControlName="especie">
+        </label>
+    
+        <label >
+          Raza:
+          <input required type="text" formControlName="raza">
+        </label>
+    
+        <label >
+          Sexo:
+          <input required type="text" formControlName="sexo">
+        </label>
+    
+        <label >
+          Edad:
+          <input required type="text" formControlName="edad">
+        </label>
+    
+        <label >
+          Nombre Propietario:
+          <input required type="text" formControlName="nombre_propietario">
+        </label>
+
+        <label >
+            Correo Propietario:
+            <input required type="text" formControlName="correo_propietario">
+        </label>
+        
+        <label >
+            Fono Propietario:
+            <input required type="text" formControlName="fono_propietario">
+        </label>
+
+        <label >
+            Clinica Solicitante:
+            <input required type="text" formControlName="clinica_solicitante">
+        </label>
+
+        <label >
+            Medico Solicitante:
+            <input required type="text" formControlName="medico_solicitante">
+        </label>
+
+        <label >
+            Tipo de Examen:
+            <input required type="text" formControlName="tipo_examen">
+        </label>
+
+        <label >
+            Nombre de Examen:
+            <input required type="text" formControlName="examen">
+        </label>
+      
+      </form>
+</div>
+<div class="container">
+    <button (click)="crear()" data-toggle="modal" data-target="#modal1" >Crear</button>
+    <button (click)="cancelar()">Cancelar</button>
+</div>
+
+<div *ngIf="modal==1" class="modal fade" id="modal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-tittle">Examen Creado</h5>
+        </div>
+
+        <div class="modal-loby">
+          Ahora puedes gestionarlo en la lista de examenes con el siguiente codigo: {{profileForm.value.codigo}}
+
+          Ademas se ha enviado un correo informando al propietario al siguiente correo :{{profileForm.value.correo_propietario}}
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="finalizar()" data-dismiss="modal">Aceptar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

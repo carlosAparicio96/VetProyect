@@ -5,8 +5,8 @@
           <tr>
             <th>Codigo</th>
             <th>Paciente</th>
-            <th>Dueño</th>
             <th>Examen</th>
+            <th>Emision</th>
             <th>Estado</th>
             <th>Link</th>
           </tr>
@@ -14,6 +14,9 @@
         <tbody>
           <tr *ngFor="let e of examenes ; let i =index ">
             <td *ngFor = "let column of headers">
+                <div *ngIf="(column=='fecha_recepcionSolicitud')">
+                  {{e[column].substr(0,10)}}
+                </div>
                 <div *ngIf="(column=='link' && estados[i]==2)">
                     <a href="{{e[column]}}">Examen</a>
                 </div>
@@ -25,7 +28,7 @@
                         <a>Finalizado</a>
                     </div>
                 </div>
-                <div *ngIf="(column!='link' && column!='estado')">
+                <div *ngIf="(column!='link' && column!='estado' && column!='fecha_recepcionSolicitud')">
                     {{e[column]}}
                 </div>
             </td>

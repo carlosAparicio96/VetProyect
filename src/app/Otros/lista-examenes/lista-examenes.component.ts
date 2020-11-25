@@ -15,9 +15,8 @@ export class ListaExamenesComponent implements OnInit {
   constructor(private router: Router, private vetService: VetService, private _location: Location, public dialog: MatDialog,private fb: FormBuilder) { }
 
   examenes=[]
-  headers=["codigo","nombre_paciente","nombre_propietario", "examen", "estado", "link"]
+  headers=["codigo","nombre_paciente","examen", "fecha_recepcionSolicitud", "estado", "link"]
   estados=[]
-
   async ngOnInit(){
     await this.vetService.listaExamenes().then((result:any) => { 
       for(var i =0; i< result.length;i++){

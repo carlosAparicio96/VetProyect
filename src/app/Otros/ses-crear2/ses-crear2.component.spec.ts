@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExEditComponent } from './ex-edit.component';
+import { SesCrear2Component } from './ses-crear2.component';
 
-describe('ExEditComponent', () => {
-  let component: ExEditComponent;
-  let fixture: ComponentFixture<ExEditComponent>;
+describe('SesCrear2Component', () => {
+  let component: SesCrear2Component;
+  let fixture: ComponentFixture<SesCrear2Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExEditComponent ]
+      declarations: [ SesCrear2Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExEditComponent);
+    fixture = TestBed.createComponent(SesCrear2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -98,8 +98,6 @@ export class VetService {
     })
   }
 
-
-
   obetenerUsuario (data) {
     console.log(data)
     return new Promise((resolve, reject) => {
@@ -244,6 +242,8 @@ editarMedico(data){
 }
 
 //-------EXAMEN-------
+
+
 getExamen (data) {
   console.log("Codigo Examen",data)
   return new Promise((resolve, reject) => {
@@ -359,10 +359,432 @@ listaExamenes(){
           console.log('error2', error)
           reject(error)
         }
+      ) 
+  })
+
+}
+crearExamen(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}examen`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
       )
   })
 
 }
+
+mailRegistroExamen(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}send`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+
+}
+
+mailFinExamen(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}sendFin`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+//------Clientes-------
+listaClientes(){
+  return new Promise((resolve, reject) => {
+    this.http.get(
+      `${apiUrl}listaClientes`
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+buscarCliente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}buscarCliente`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+newCliente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}cliente`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+
+eliminarCliente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}eliminarCliente`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+mascotasCliente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}mascotasCliente`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+//PACIENTES---------------------------------------------------------------------------------------------
+buscarPaciente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}buscarPaciente`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+listaPacientes(){
+  return new Promise((resolve, reject) => {
+    this.http.get(
+      `${apiUrl}listaPacientes`
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+crearPaciente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}paciente`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+eliminarPaciente(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}eliminarPaciente`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+eliminarPacienteSin(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}eliminarPacienteSin`,data
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+//------SESION
+
+listaSesiones(){
+  return new Promise((resolve, reject) => {
+    this.http.get(
+      `${apiUrl}listaSesiones`
+    )
+      .subscribe(
+        (response: any) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+buscarSesion(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}buscarSesion`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+traerSesion(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}traerSesion`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+eliminarSesion(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}eliminarSesion`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+crearSesion(data){
+  return new Promise((resolve, reject) => {
+    this.http.post(
+      `${apiUrl}sesion`,data
+    )
+      .subscribe(
+        (response) => {
+          try {
+            console.log('response', response)
+            resolve(response)
+          } catch (error) {
+            console.log('error1', error)
+            reject(error)
+          }
+        },
+        error => {
+          console.log('error2', error)
+          reject(error)
+        }
+      )
+  })
+}
+
+
 
   //-----FIN-----//
 }

@@ -57,7 +57,7 @@ export class ExamenesComponent implements OnInit {
     fecha_recepcionMuestra:'',
     codigo:''
   }];
-
+  archivo=0;
   respuesta:number;
   fm:number=0;
   rm:number=0;
@@ -75,12 +75,19 @@ export class ExamenesComponent implements OnInit {
         this.estado=result[0].estado
         this.lista=1
         console.log("estado",this.estado)
-        if(result[0].fecha_tomaMuestra)
-        this.fechaTM=1;
-        if(result[0].fecha_recepcionSolicitud)
-        this.fechaRS=1;
-        if(result[0].fecha_recepcionMuestra)
-        this.fechaRM=1;
+        if(result[0].fecha_tomaMuestra){
+          this.fechaTM=1;
+          this.archivo=this.archivo+1;
+        }
+        if(result[0].fecha_recepcionSolicitud){
+          this.fechaRS=1;
+        }
+        if(result[0].fecha_recepcionMuestra){
+          this.fechaRM=1;
+          this.archivo=this.archivo+1;
+        }
+        
+
       }else{
         console.log("CODIGO NO EXISTE")
       }
@@ -100,6 +107,7 @@ export class ExamenesComponent implements OnInit {
           this.fm=1;
           this.tomaMuestra=0;
           this.fechaTM=2;
+          this.archivo=this.archivo+1;
         }
       })
     }else{
@@ -116,6 +124,7 @@ export class ExamenesComponent implements OnInit {
           this.rm=1;
           this.recepcionMuestra=0;
           this.fechaRM=2;
+          this.archivo=this.archivo+1;
         }
       })
     }else{
@@ -163,7 +172,9 @@ export class ExamenesComponent implements OnInit {
     console.log('Finalizado',this.chao)
     this.vetService.finExamen(this.chao).then((result:any) =>{
       if(result==1){
-        console.log("SI")
+        this.vetService.mailFinExamen(this.examen[0]).then(result =>{
+          console.log('Correo enviado',result)
+        })
         location.reload()
       }else{
         console.log("NO")
@@ -171,7 +182,7 @@ export class ExamenesComponent implements OnInit {
     })
   }
   crearExamen(){
-    this.router.navigate(['crear-examen'])
+    this.router.navigate(['ex-crear'])
   }
 
 

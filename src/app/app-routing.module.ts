@@ -11,10 +11,17 @@ import { MenuComponent } from './Componentes/menu/menu.component';
 import { PacientesComponent } from './Componentes/pacientes/pacientes.component';
 import { SesionesComponent } from './Componentes/sesiones/sesiones.component';
 import { AddMeComponent } from './Otros/add-me/add-me.component';
-import { CrearExamenComponent } from './Otros/crear-examen/crear-examen.component';
+import { CliCrearComponent } from './Otros/cli-crear/cli-crear.component';
+import { CliListaComponent } from './Otros/cli-lista/cli-lista.component';
 import { EditaMedicoComponent } from './Otros/edita-medico/edita-medico.component';
-import { ExEditComponent } from './otros/ex-edit/ex-edit.component';
+import { ExCrearComponent } from './Otros/ex-crear/ex-crear.component';
 import { ListaExamenesComponent } from './Otros/lista-examenes/lista-examenes.component';
+import { PasCrearComponent } from './Otros/pas-crear/pas-crear.component';
+import { PasCrear2Component } from './Otros/pas-crear2/pas-crear2.component';
+import { PasListaComponent } from './Otros/pas-lista/pas-lista.component';
+import { SesCrearComponent } from './Otros/ses-crear/ses-crear.component';
+import { SesCrear2Component } from './Otros/ses-crear2/ses-crear2.component';
+import { SesListaComponent } from './Otros/ses-lista/ses-lista.component';
 
 const routes: Routes = [
   {
@@ -22,7 +29,7 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:'barra',
+    path:'barra', 
     component: BarraComponent
   },
   {
@@ -42,36 +49,69 @@ const routes: Routes = [
     component: EditaMedicoComponent
   },
   {
-    path:'pacientes',
+    path:'pacientes/:id',
     component: PacientesComponent
   },
   {
-    path:'clientes',
+    path:'pas-crear',
+    component: PasCrearComponent
+  },
+  {
+    path:'pas-crear2/:id',
+    component: PasCrear2Component
+  },
+  {
+    path:'pas-lista',
+    component: PasListaComponent
+  },
+  {
+    path:'clientes/:id',
     component: ClientesComponent
+  },
+  {
+    path:'cli-crear',
+    component: CliCrearComponent
+  },
+  {
+    path:'cli-lista',
+    component: CliListaComponent
   },
   {
     path:'examenes',
     component: ExamenesComponent
   },
   {
-    path:'sesiones',
+    path:'sesiones/:id',
     component: SesionesComponent
+  },
+  {
+    path:'ses-lista',
+    component: SesListaComponent
+  },
+  {
+    path:'ses-crear/:id',
+    component: SesCrearComponent
+  },
+  {
+    path:'ses-crear2',
+    component: SesCrear2Component
   },
   {
     path:'consultas',
     component: ConsultasComponent
   },
   {
-    path:'examen-edit',
-    component: ExEditComponent
-  },
-  {
     path:'lista-examenes',
     component: ListaExamenesComponent
   },
   {
-    path:'crear-examen',
-    component: CrearExamenComponent
+    path:'ex-crear',
+    component: ExCrearComponent
+  },
+  {
+    path:'',
+    redirectTo:'menu',
+    pathMatch: 'full'
   }
 
 ];

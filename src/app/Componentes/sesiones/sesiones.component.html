@@ -1,1 +1,48 @@
-<p>sesiones works!</p>
+<div class="container">
+    <h3>Datos de sesión</h3>
+    <h3>--------------------------------------------------------</h3>
+
+    <ul>
+        <li>Titulo: {{sesion[0].titulo}}</li>
+        <li>Observaciones: {{sesion[0].observaciones}}</li>
+        <li>Receta: {{sesion[0].receta}}</li>
+        <li>Fecha: {{sesion[0].fecha.substr(0,10)}}</li>
+        <li>Medico: {{sesion[0].rut_medico}}</li>
+    </ul>
+
+    <h3>Datos del paciente</h3>
+
+    <ul>
+        <li>Nombre: {{paciente[0].nombre}}</li>
+        <li>Especie: {{paciente[0].especie}}</li>
+        <li>Raza: {{paciente[0].raza}}</li>
+        <li>Edad {{paciente[0].edad}}</li>
+        <li>Sexo: {{paciente[0].Sexo}}</li>
+        <li>Peso: {{paciente[0].peso}} Kg</li>
+        <li>Enfermedades: {{paciente[0].enfermedades}}</li>
+        <li>Tratamientos: {{paciente[0].tratamientos}}</li>
+    </ul>
+
+    <button type="button" data-toggle="modal" data-target="#modal1" >Eliminar esta Sesión</button>
+</div>
+
+<div class="modal fade" id="modal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-tittle">Eliminar Sesión</h2>
+        </div>
+
+        <div class="modal-loby">
+            <p>Esta a punto de eliminar el registro de esta sesion del sistema</p>
+        </div>
+
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="eliminiar()" data-dismiss="modal">SI</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

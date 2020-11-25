@@ -43,9 +43,11 @@
           </div>
         </div>
         <div>
+
           <div *ngIf="fechaTM==1">
             <li class="list-group-item">Fecha Toma de Muestra: {{examen[0].fecha_tomaMuestra.substr(0,10)}}</li>
           </div>
+
           <div *ngIf="fechaTM==0">
             <button (click)="toma()">Agregar Fecha de Toma de Muestra</button>
             <div *ngIf="tomaMuestra==1">
@@ -56,15 +58,18 @@
               </form>
               <button (click)="addFMuestra()">Agregar</button>
             </div>
-          </div>  
+          </div>
+
           <div *ngIf="fm==1">
             <Label>*Fecha Actualizada* : {{date[0].fecha_tomaMuestra}}</Label>
           </div>  
         </div>
+
         <div>
           <div *ngIf="fechaRM==1">
             <li class="list-group-item">Fecha Recepcion Muestra: {{examen[0].fecha_recepcionMuestra.substr(0,10)}}</li>
           </div>
+
           <div *ngIf="fechaRM==0">
             <button (click)="recepcion()">Agregar Fecha de Recepcion de Muestra</button>
             <div *ngIf="recepcionMuestra==1">
@@ -96,11 +101,14 @@
     <script src="/__/firebase/8.0.1/firebase-firestore.js"></script>
   </body>
 
-  <div *ngIf="estado==1 && rm==1 && fm==1" >
+  <div *ngIf="estado==1 && archivo==2" >
     <div *ngIf="terminar==0" class="row">
       <label for="image">Archivo de examen: </label>
       <input type="file" (change)="upload($event)">
       <button (click)="uploadImage()">Subir Imagen</button>
+    </div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{uploadValue}}</div>
     </div>
     <div *ngIf="terminar==1">
       <label>*Archivo Subido</label>
