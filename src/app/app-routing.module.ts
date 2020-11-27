@@ -24,6 +24,7 @@ import { PasListaComponent } from './Otros/pas-lista/pas-lista.component';
 import { SesCrearComponent } from './Otros/ses-crear/ses-crear.component';
 import { SesCrear2Component } from './Otros/ses-crear2/ses-crear2.component';
 import { SesListaComponent } from './Otros/ses-lista/ses-lista.component';
+import { ConsultaClienteComponent } from './Usuario/consulta-cliente/consulta-cliente.component';
 import { ConsultaExamenComponent } from './Usuario/consulta-examen/consulta-examen.component';
 import { ContactoComponent } from './Usuario/contacto/contacto.component';
 import { ExamenEncontradoComponent } from './Usuario/examen-encontrado/examen-encontrado.component';
@@ -145,6 +146,10 @@ const routes: Routes = [
   {
     path:'examen-encontrado/:id',
     component: ExamenEncontradoComponent
+  },
+  {
+    path:'consulta-cliente',
+    component: ConsultaClienteComponent
   },
 
   {

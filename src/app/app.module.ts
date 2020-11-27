@@ -48,6 +48,7 @@ import { ExamenEncontradoComponent } from './Usuario/examen-encontrado/examen-en
 import { ServiciosComponent } from './Usuario/servicios/servicios.component';
 import { ContactoComponent } from './Usuario/contacto/contacto.component';
 import { RealizarConsultaComponent } from './Usuario/realizar-consulta/realizar-consulta.component';
+import { ConsultaClienteComponent } from './Usuario/consulta-cliente/consulta-cliente.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { RealizarConsultaComponent } from './Usuario/realizar-consulta/realizar-
     ExamenEncontradoComponent,
     ServiciosComponent,
     ContactoComponent,
-    RealizarConsultaComponent
+    RealizarConsultaComponent,
+    ConsultaClienteComponent
   ],
   entryComponents:[DialogComponent],
   imports: [
