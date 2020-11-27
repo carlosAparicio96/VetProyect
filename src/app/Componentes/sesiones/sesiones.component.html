@@ -1,5 +1,8 @@
 <div class="container">
     <h3>Datos de sesión</h3>
+    <button type="button" data-toggle="modal" data-target="#editar">Editar Sesion  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+    </svg></button>
     <h3>--------------------------------------------------------</h3>
 
     <ul>
@@ -23,10 +26,12 @@
         <li>Tratamientos: {{paciente[0].tratamientos}}</li>
     </ul>
 
-    <button type="button" data-toggle="modal" data-target="#modal1" >Eliminar esta Sesión</button>
+    <button type="button" data-toggle="modal" data-target="#eliminar" >Eliminar esta Sesión <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+    </svg></button>
 </div>
 
-<div class="modal fade" id="modal1">
+<div class="modal fade" id="eliminar">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -34,13 +39,41 @@
         </div>
 
         <div class="modal-loby">
-            <p>Esta a punto de eliminar el registro de esta sesion del sistema</p>
+            <p>Está a punto de eliminar el registro de esta sesión del sistema.</p>
         </div>
 
         <div class="modal-footer">
             <p>¿Desea Continuar?</p>
           <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
           <button type="button" class="btn btn-primary" (click)="eliminiar()" data-dismiss="modal">SI</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-tittle">Editar Paciente</h2>
+        </div>
+
+        <div class="modal-loby">
+           <ul>
+               <li>Titulo: <input [(ngModel)]="edit[0].titulo"></li>
+               <li>Observaciones: <input [(ngModel)]="edit[0].observaciones"></li>
+               <li>Receta: <input [(ngModel)]="edit[0].receta"></li>
+
+           </ul>
+
+           <p>Al aceptar, los datos de la sesión cambiarán por los que acaba de reemplazar.</p>
+        </div>
+
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="editar()" data-dismiss="modal">SI</button>
         </div>
 
       </div>

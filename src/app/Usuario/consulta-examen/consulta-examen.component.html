@@ -1,0 +1,65 @@
+<div *ngIf="si==0" class="jumbotron container">
+    <h1 class="display-4">Consulta veterinaria Sausalito!</h1>
+    <p class="lead">Aqui puedes buscar el proceso de tu solicitud de examen!</p>
+    <hr class="my-4">
+    <p>Inserte aquí su código</p>
+    <input type="text" [(ngModel)]="buscador.codigo"  style="text-transform: uppercase;">
+    <a class="btn btn-primary btn-lg" (click)="buscar()" role="button">Buscar</a>
+</div>
+
+<div *ngIf="si==1" class="jumbotron container">
+    <h1 class="display-6" id="titulo">Resultado de examen!</h1>
+    <hr class="my-4">
+        <div *ngIf="examen[0].estado==2" ><p class="lead" id="titulo">Estado: Finalizado!</p></div>
+        <div *ngIf="examen[0].estado==1" ><p class="lead" id="titulo">Estado: En proceso!</p></div>
+        <p class="lead" id="titulo">Fecha Solicitud: {{examen[0].fecha_recepcionSolicitud.substr(8,2)}} / {{examen[0].fecha_recepcionSolicitud.substr(5,2)}} / {{examen[0].fecha_recepcionSolicitud.substr(0,4)}}</p>
+    <hr class="my-4">
+    <ul class="list-group" id="lista">
+        <li class="list-group-item" id="enLista">Nombre paciente: {{examen[0].nombre_paciente}}</li>
+        <li class="list-group-item" id="enLista">Especie: {{examen[0].especie}}</li>
+        <li class="list-group-item" id="enLista">Raza: {{examen[0].raza}}</li>
+        <li class="list-group-item" id="enLista">Sexo: {{examen[0].sexo}}</li>
+        <li class="list-group-item" id="enLista">Edad: {{examen[0].edad}}</li>
+    </ul>
+    <ul class="list-group" id="lista">
+        <li class="list-group-item" id="enLista">Clínica solicitante: {{examen[0].clinica_solicitante}}</li>
+        <li class="list-group-item" id="enLista">Médico solicitante: {{examen[0].medico_solicitante}}</li>
+        <li class="list-group-item" id="enLista">Propietario Mascota: {{examen[0].nombre_propietario}}</li>
+        <li class="list-group-item" id="enLista">Correo Propietario: {{examen[0].correo_propietario}}</li>
+        <li class="list-group-item" id="enLista">Fono Propietario: {{examen[0].fono_propietario}}</li>
+    </ul>
+<div *ngIf="(examen[0].fecha_tomaMuestra!='NULL' && examen[0].fecha_recepcionMuestra!='NULL')">
+    <ul class="list-group" id="lista">
+        <div *ngIf="examen[0].fecha_tomaMuestra!='NULL'">
+            <li class="list-group-item" id="enLista">Fecha toma de muestra: {{examen[0].fecha_tomaMuestra.substr(8,2)}} / {{examen[0].fecha_tomaMuestra.substr(5,2)}} / {{examen[0].fecha_tomaMuestra.substr(0,4)}}</li>
+        </div>
+        <div *ngIf="examen[0].fecha_recepcionMuestra!='NULL'">
+            <li class="list-group-item" id="enLista">Fecha recepción muestra: {{examen[0].fecha_recepcionMuestra.substr(8,2)}} / {{examen[0].fecha_recepcionMuestra.substr(5,2)}} / {{examen[0].fecha_recepcionMuestra.substr(0,4)}}</li>
+        </div>
+    </ul>
+</div>
+
+    <hr class="my-4">
+    <p class="lead" id="titulo">Datos de examen</p>
+    <hr class="my-4">
+
+  <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Tipo de examen</th>
+                <th>Examen</th>
+                <th>Descarga</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{examen[0].tipo_examen}}</td>
+                <td>{{examen[0].examen}}</td>
+                <td *ngIf="examen[0].estado==1" >En proceso!</td>
+                <td *ngIf="examen[0].estado==2" ><a href="{{examen[0].link}}">Examen</a></td>
+            </tr> 
+            </tbody>
+        </table>
+    </div>
+</div>

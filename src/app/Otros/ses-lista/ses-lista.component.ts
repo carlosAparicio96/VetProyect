@@ -23,6 +23,32 @@ export class SesListaComponent implements OnInit {
   dataM={rut:''}
   dataP={id:''}
 
+  fecha={inicio:'', fin:''}
+  busqueda=0;
+
+  buscar(){
+    console.log('Fecha',this.fecha)
+    this.vetService.buscarSesionFecha(this.fecha).then((result:any) => {
+      this.sesiones.splice(0,this.sesiones.length)
+      for(var i=0; i<result.length; i++){
+        this.sesiones.push(result[i])
+      }
+      console.log('sesiones',this.sesiones)
+    })
+  }
+
+  buscarEntre(){
+    console.log('Fecha',this.fecha)
+    this.vetService.buscarSesionFechaEntre(this.fecha).then((result:any) => {
+      this.sesiones.splice(0,this.sesiones.length)
+      for(var i=0; i<result.length; i++){
+        this.sesiones.push(result[i])
+      }
+      console.log('sesiones',this.sesiones)
+    })
+  }
+
+
   crearSesion(){
     this.router.navigate(['/ses-crear2'])
   }
@@ -30,6 +56,10 @@ export class SesListaComponent implements OnInit {
   sesion(i){
     var id=this.sesiones[i].id
     this.router.navigate(['/sesiones',id])
+  }
+
+  cambiar(i){
+    this.busqueda=i;
   }
 
   async ngOnInit(){

@@ -21,12 +21,24 @@ export class ClientesComponent implements OnInit {
   lista=0;
   masc=0
   encontrado=[]
+  edit=[]
   mascotas=[]
   sesiones=[]
   data={id_paciente:''}
   dataS={id:''}
   dataP={id:''}
   dataC={rut:''}
+
+  editar(){
+    this.vetService.editarCliente(this.edit[0]).then(result => {
+      if(result==1){
+        alert('Datos Actualizados')
+        location.reload()
+      }else{
+        alert('Ocurrio un error')
+      }
+    })
+  }
 
   mascota(id){
     console.log("id:",this.mascotas[id].id)
@@ -66,10 +78,6 @@ export class ClientesComponent implements OnInit {
 
   }
 
-  eliminarSin(){
-
-  }
-
   crearPaciente(){
     this.router.navigate(['/pas-crear2',this.encontrado[0].rut])
   }
@@ -78,7 +86,7 @@ export class ClientesComponent implements OnInit {
     await this._ac.paramMap.subscribe(params =>{
       var data={rut:params.get('id')}
       this.dataC.rut=params.get('id')
-      this.vetService.buscarCliente(data).then(result =>{
+      this.vetService.buscarCliente(data).then((result:any) =>{
         if(result[0]){
           this.encontrado.push(result[0])
           this.rutMascota.value.rut_cliente=data.rut
@@ -95,7 +103,9 @@ export class ClientesComponent implements OnInit {
           alert('Rut no existe, vuelva a intentarlo')
           this._location.back()
         }
-
+      })
+      this.vetService.buscarCliente(data).then((result3:any) =>{
+        this.edit.push(result3[0])
       })
 
     })

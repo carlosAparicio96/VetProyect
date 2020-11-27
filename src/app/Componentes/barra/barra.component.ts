@@ -11,7 +11,7 @@ export class BarraComponent implements OnInit {
   constructor(private router:Router) { }
 
   home(){
-    this.router.navigate(['menu'])
+    this.router.navigate(['consulta-examen'])
   }
 
   ngOnInit(): void {

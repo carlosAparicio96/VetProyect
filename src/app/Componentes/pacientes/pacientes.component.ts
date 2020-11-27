@@ -15,6 +15,7 @@ export class PacientesComponent implements OnInit {
   }
 
   paciente=[]
+  edit=[]
   sesiones=[]
   si=0;
   headers=["titulo","fecha"]
@@ -48,9 +49,19 @@ export class PacientesComponent implements OnInit {
     }) 
 
   }
-
   crearSesion(){
     this.router.navigate(['/ses-crear',this.paciente[0].id])
+  }
+
+  editar(){
+    this.vetService.editarPaciente(this.edit[0]).then(result => {
+      if(result==1){
+        alert('Paciente Editado correctamente')
+        location.reload()
+      }else{
+        alert('Ocurrio un error')
+      }
+    })
   }
 
 
@@ -61,10 +72,13 @@ export class PacientesComponent implements OnInit {
       this.data3.id=params.get('id')
 
       console.log('id paciente:',data)
-      this.vetService.buscarPaciente(data).then(result =>{
-        console.log('Buscada',result)
+      this.vetService.buscarPaciente(data).then((result: any) =>{
         this.paciente.push(result[0])
       })
+      this.vetService.buscarPaciente(data).then((result3:any) =>{
+        this.edit.push(result3[0])
+      })
+
       this.vetService.buscarSesion(data2).then((result2:any)=> {
         console.log('Sesiones',result2)
         if(result2.length>0){

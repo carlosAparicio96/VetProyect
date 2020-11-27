@@ -18,13 +18,15 @@ export class MedicosComponent implements OnInit {
 
   constructor(private router: Router, private vetService: VetService, private _location: Location, public dialog: MatDialog,private fb: FormBuilder,private storage: AngularFireStorage) { }
 
+  rutMedicos=[]
   medicos=[]
+  sesiones=[]
   headers = ["rut","apellido","nombre", "especialidad", "correo", "telefono"];
   
   //para open dialog()
   rut:string;
   send = {
-    run:''
+    rut_medico:''
   } 
   error:number=0;
   error2:number=0;
@@ -34,60 +36,43 @@ export class MedicosComponent implements OnInit {
   form = this.fb.group({
     rut:['', Validators.required]
   });
-  encontrado = this.fb.group({
-    rut:['', Validators.required],
-    apellido:['', Validators.required],
-    nombre:['', Validators.required],
-    especialidad:['', Validators.required],
-    telefono:['', Validators.required],
-    correo: ['', [Validators.required,Validators.email]],
-  });
+  encontrado =[]
 
   medico=[];
 
   async ngOnInit(){
     await this.vetService.listaMedicos().then((result:any) => {
-      
       for(var i =0; i< result.length;i++){
-
         this.medicos.push(result[i])
+        this.rutMedicos.push(result[i].rut)
       }
-      console.log("medicos",this.medicos)
     }) 
-    
-    var i;
-    var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
-    var contraseña = "";
-    for (i=0; i<6; i++) contraseña +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
-    console.log(contraseña)
 
   }
 
   delete(){
-    if(this.form.valid){
-      this.vetService.borrarMedico(this.form.value).then((result:any) =>{
-        console.log("respuesta",result)
-        if(result==1){
+    this.send.rut_medico=this.form.value.rut
+    this.vetService.eliminarSesionCliente(this.send).then((result:any) =>{
+      this.vetService.borrarMedico(this.form.value).then(result2 => {
+        if(result2>0){
           alert("medico eliminado del sistema")
           location.reload();
         }else{
-          alert("rut ingresado no coincide")
+          alert('ocurrio un error')
         }
       })
-    }else{
-      this.error=1;
-    }
+    })
   }
-  edit(){
+
+
+  async edit(){
     if(this.form.valid){
-      this.vetService.buscarMedico(this.form.value).then((result:any) =>{
+    await this.vetService.buscarMedico(this.form.value).then((result:any) =>{
       console.log("respuesta",result[0])
         if(result.length>0){
           this.medico[0]=result[0];
           this.busqueda=1
           this.footer=0;
-
-          this.encontrado=result[0]
         }else{
           console.log('Rut no existe')
           this.error3=1;
@@ -109,25 +94,14 @@ export class MedicosComponent implements OnInit {
   }
 
   guardar(){
-    if(this.encontrado.valid){
-      this.vetService.editarMedico(this.encontrado.value).then((result:any) =>{
-        console.log("respuesta",result[0])
-        /* if(result.length>0){
-          this.medico[0]=result[0];
-          this.busqueda=1
-          this.footer=0;
-
-          this.encontrado=result[0]
-        }else{
-          console.log('Rut no existe')
-          this.error3=1;
-          this.error2=0;
-        } */
-      })
-    }else{
-      this.error2=1;
-      this.error3=0;
-    }
+    this.vetService.editarMedico(this.medico[0]).then((result:any) =>{
+      if(result>0){
+        alert('Médico editado correctamente')
+        location.reload()
+      }else{
+        alert('Ocurrio un error')
+      }
+    })
   }
 
   

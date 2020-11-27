@@ -1,0 +1,73 @@
+
+<div class="jumbotron container">
+    <div *ngIf="noCli==0" class="container">
+        <h1 class="display-5">Realiza tu consulta! </h1>
+        <hr class="my-4">
+        <h5>Inserte aquí su rut</h5>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">RUT sin punto ni guin</span>
+            </div>
+            <input type="text" [(ngModel)]="dataC.rut" class="form-control" placeholder="192085306" >
+            <button type="button" (click)="paciente()" class="btn btn-primary" >Buscar</button>
+        </div>
+    </div>
+
+    <div *ngIf="noCli==1">
+        <h1 class="display-4">Hola {{cli[0].nombre}} </h1>
+        <p class="lead">Elije la mascota de la cual trata esta consulta</p>
+        <hr class="my-4">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Mascota</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="consulta.id_paciente" >
+              <option selected>Selecciona...</option>
+              <option *ngFor="let p of pas; let i=index " value='{{pas[i].id}}'>{{p.nombre}}</option>
+            </select>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Título</span>
+                </div>
+                <input type="text" [(ngModel)]="consulta.titulo" class="form-control" placeholder="Motivo de consulta">
+            </div>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Consulta</span>
+            </div>
+              <textarea class="form-control" aria-label="With textarea" [(ngModel)]="consulta.consulta"></textarea>
+        </div>
+        <hr class="my-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Correo</span>
+            </div>
+            <input type="email" [(ngModel)]="consulta.correo" class="form-control" placeholder="mail@gmail.com">
+        </div>
+
+        <button  data-toggle="modal" data-target="#enviar" class="btn btn-primary btn-lg">Enviar</button>
+
+    </div>
+</div>
+
+<div class="modal fade" id="enviar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-tittle">Solicitud de consulta</h3>
+        </div>
+  
+        <div class="modal-loby">  
+            <p>Al momento de ser respondida su consulta, se enviará un mensaje con la respuesta a la direccion de correo electronico ingresada anteriormente ( {{consulta.correo}} )</p>
+        </div>
+  
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="enviar()" data-dismiss="modal">SI</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

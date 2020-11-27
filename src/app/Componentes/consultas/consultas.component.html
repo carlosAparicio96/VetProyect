@@ -1,1 +1,81 @@
-<p>consultas works!</p>
+<div *ngIf="consulta[0].estado==2" class="container" >
+    <ul>
+        <h3>Datos de Consulta</h3>
+        <li><Label>Titulo: </Label> {{consulta[0].titulo}}</li>
+        <li><Label>Consulta: </Label> {{consulta[0].consulta}}?</li>
+        <li><Label>Respuesta: </Label> {{consulta[0].respuesta}}</li> 
+        <li><Label>Fecha Respuesta: </Label> {{consulta[0].fecha_respuesta.substr(0,10)}}</li>
+        
+        <h3>Datos del Emisor</h3>
+        <li><Label>Nombre: </Label> {{cliente[0].nombre}} {{cliente[0].apellido}}</li>
+        <li><label>Mascota: </label> {{paciente[0].nombre}}</li>
+        <li><label>Especie: </label> {{paciente[0].especie}}</li>
+        <li><Label>Fecha Consulta: </Label> {{consulta[0].fecha_consulta.substr(0,10)}}</li>  
+    </ul>
+    <button type="button" data-toggle="modal" data-target="#eliminar">Eliminar</button>
+</div>
+
+<div *ngIf="consulta[0].estado==1" class="container" >
+    <ul>
+        <h3>Datos de Consulta</h3>
+        <li><Label>Titulo: </Label> {{consulta[0].titulo}}</li>
+        <li><Label>Consulta: </Label> {{consulta[0].consulta}}?</li>
+
+        <button type="button" data-toggle="modal" data-target="#respuesta">Responder</button>
+        
+        <h3>Datos del Emisor</h3>
+        <li><Label>Nombre: </Label> {{cliente[0].nombre}} {{cliente[0].apellido}}</li>
+        <li><label>Mascota: </label> {{paciente[0].nombre}}</li>
+        <li><label>Especie: </label> {{paciente[0].especie}}</li>
+        <li><Label>Fecha Consulta: </Label> {{consulta[0].fecha_consulta.substr(0,10)}}</li>  
+    </ul>
+    <button type="button" data-toggle="modal" data-target="#eliminar">Eliminar</button>
+</div>
+
+<div class="modal fade" id="respuesta">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-tittle">Módulo de respuesta</h2>
+        </div>
+
+        <div class="modal-loby">
+           <ul>
+               <li>Pregunta: <input [(ngModel)]="respuesta[0].consulta"></li>
+               <li>Respuesta: <input [(ngModel)]="respuesta[0].respuesta"></li>
+
+           </ul>
+
+           <p>Al aceptar, se enviara un correo al emisor, indicando la respuesta a su consulta</p>
+        </div>
+
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="responder()" data-dismiss="modal">SI</button>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="eliminar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-tittle">Elimnar esta consulta?</h2>
+        </div>
+
+        <div class="modal-loby">
+           <p>Al aceptar, se eliminada la presente consulta del sistema</p>
+        </div>
+
+        <div class="modal-footer">
+            <p>¿Desea Continuar?</p>
+          <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary" (click)="eliminar()" data-dismiss="modal">SI</button>
+        </div>
+
+      </div>
+    </div>
+</div>

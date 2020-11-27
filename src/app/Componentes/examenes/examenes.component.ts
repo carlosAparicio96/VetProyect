@@ -185,6 +185,17 @@ export class ExamenesComponent implements OnInit {
     this.router.navigate(['ex-crear'])
   }
 
+  eliminar(){
+    this.vetService.eliminarExamen(this.profileForm.value).then(result => {
+      if(result>0){
+        alert('Proceso de examen eliminado')
+        location.reload()
+      }else{
+        alert('Error')
+      }
+    })
+  }
+
 
   ngOnInit(): void {
   }

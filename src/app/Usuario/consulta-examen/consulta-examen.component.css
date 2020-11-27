@@ -1,0 +1,11 @@
+#titulo{
+    text-align: center;
+}
+#lista{
+    display: inline-block;
+    justify-content: center;
+}
+
+#enLista{
+    text-align: left;
+}

@@ -27,60 +27,11 @@
               *Debe ingresar un rut
             </div>
           </div>
-
+          <p>Al eliminar un medico del sistema, se eliminarán las sesiones adjuntas al rut correspondiente</p>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secundaty" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="delete()">Elimnar</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal editar medico -->
-    
-    <div class="modal fade" id="modal2">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-tittle">Editar Médico</h5>
-          </div>
-
-          <div class="modal-loby">
-            <label >Ingrese rut sin punto ni guion</label>
-            <form [formGroup]="form">
-              Rut: <input required type="text" placeholder="192085306" formControlName="rut">     
-            </form>
-            <div *ngIf="error2==1">
-              *Debe ingresar un rut
-            </div>
-            <div *ngIf="error3==1">
-              *Rut ingresado no es valido
-            </div>
-
-            <div *ngIf="busqueda==1">
-
-              <ul class="list-group">
-                <form [formGroup]="encontrado">
-                  <li class="list-group-item">Rut: <input type="text" value="{{encontrado.rut}}" formControlName="rut"></li>
-                  <li class="list-group-item">Apellido: <input type="text" value="{{encontrado.apellido}}" formControlName="apellido"></li>
-                  <li class="list-group-item">Nombre: <input type="text" value="{{encontrado.nombre}}" formControlName="nombre"></li>
-                  <li class="list-group-item">Especialidad: <input type="text" value="{{encontrado.especialidad}}" formControlName="especialidad"></li>
-                  <li class="list-group-item">Telefono: <input type="text" value="{{encontrado.telefono}}" formControlName="telefono"></li>
-                  <li class="list-group-item">Correo: <input type="text" value="{{encontrado.correo}}" formControlName="correo"></li>
-                </form>
-              </ul>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secundaty" (click)="reload()">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="guardar()">Confirmar</button>
-              </div>             
-            </div>
-          </div>
-
-          <div *ngIf="footer==1" class="modal-footer">
-            <button type="button" class="btn btn-secundaty" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="edit()">Buscar</button>
+            <p>Desea continuar?</p>
+            <button type="button" class="btn btn-secundaty" data-dismiss="modal">NO</button>
+            <button type="button" class="btn btn-primary" (click)="delete()">SI</button>
           </div>
 
         </div>
@@ -103,9 +54,65 @@
         </thead>
         <tbody>
           <tr *ngFor="let m of medicos ; let i =index ">
-            <td *ngFor = "let column of headers">{{m[column]}}</td>
+            <td *ngFor = "let column of headers">
+
+              <div *ngIf="column=='rut'">
+                {{m[column]}}
+              </div>
+              <div *ngIf="column!='rut'">
+                {{m[column]}}
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
+</div>
+
+<!-- Modal editar medico -->
+
+<div class="modal fade" id="modal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tittle">Editar Médico</h5>
+      </div>
+
+      <div class="modal-loby">
+        <label >Ingrese rut sin punto ni guion</label>
+        <form [formGroup]="form">
+          Rut: <input required type="text" placeholder="192085306" formControlName="rut">     
+        </form>
+        <div *ngIf="error2==1">
+          *Debe ingresar un rut
+        </div>
+        <div *ngIf="error3==1">
+          *Rut ingresado no es valido
+        </div>
+
+        <div *ngIf="busqueda==1">
+
+          <ul class="list-group">
+              <li>Nombre: <input [(ngModel)]="medico[0].nombre"></li>
+              <li>Apellido: <input [(ngModel)]="medico[0].apellido"></li>
+              <li>Especialidad: <input [(ngModel)]="medico[0].especialidad"></li>
+              <li>Correo: <input [(ngModel)]="medico[0].correo"></li>
+              <li>Telefono: <input [(ngModel)]="medico[0].telefono"></li>
+          </ul>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secundaty" (click)="reload()">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="guardar()">Confirmar</button>
+          </div> 
+                      
+        </div>
+      </div>
+
+      <div *ngIf="footer==1" class="modal-footer">
+        <button type="button" class="btn btn-secundaty" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="edit()">Buscar</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 

@@ -13,15 +13,22 @@ import { SesionesComponent } from './Componentes/sesiones/sesiones.component';
 import { AddMeComponent } from './Otros/add-me/add-me.component';
 import { CliCrearComponent } from './Otros/cli-crear/cli-crear.component';
 import { CliListaComponent } from './Otros/cli-lista/cli-lista.component';
+import { ConListaComponent } from './Otros/con-lista/con-lista.component';
 import { EditaMedicoComponent } from './Otros/edita-medico/edita-medico.component';
 import { ExCrearComponent } from './Otros/ex-crear/ex-crear.component';
 import { ListaExamenesComponent } from './Otros/lista-examenes/lista-examenes.component';
+import { PasBuscadosComponent } from './Otros/pas-buscados/pas-buscados.component';
 import { PasCrearComponent } from './Otros/pas-crear/pas-crear.component';
 import { PasCrear2Component } from './Otros/pas-crear2/pas-crear2.component';
 import { PasListaComponent } from './Otros/pas-lista/pas-lista.component';
 import { SesCrearComponent } from './Otros/ses-crear/ses-crear.component';
 import { SesCrear2Component } from './Otros/ses-crear2/ses-crear2.component';
 import { SesListaComponent } from './Otros/ses-lista/ses-lista.component';
+import { ConsultaExamenComponent } from './Usuario/consulta-examen/consulta-examen.component';
+import { ContactoComponent } from './Usuario/contacto/contacto.component';
+import { ExamenEncontradoComponent } from './Usuario/examen-encontrado/examen-encontrado.component';
+import { RealizarConsultaComponent } from './Usuario/realizar-consulta/realizar-consulta.component';
+import { ServiciosComponent } from './Usuario/servicios/servicios.component';
 
 const routes: Routes = [
   {
@@ -61,6 +68,10 @@ const routes: Routes = [
     component: PasCrear2Component
   },
   {
+    path:'pas-buscados',
+    component: PasBuscadosComponent
+  },
+  {
     path:'pas-lista',
     component: PasListaComponent
   },
@@ -97,8 +108,12 @@ const routes: Routes = [
     component: SesCrear2Component
   },
   {
-    path:'consultas',
+    path:'consultas/:id',
     component: ConsultasComponent
+  },
+  {
+    path:'con-lista',
+    component: ConListaComponent
   },
   {
     path:'lista-examenes',
@@ -108,9 +123,33 @@ const routes: Routes = [
     path:'ex-crear',
     component: ExCrearComponent
   },
+
+  //USURIO
+
+  {
+    path:'consulta-examen',
+    component: ConsultaExamenComponent
+  },
+  {
+    path:'servicios',
+    component: ServiciosComponent
+  },  
+  {
+    path:'contacto',
+    component: ContactoComponent
+  },
+  {
+    path:'realizar-consulta',
+    component: RealizarConsultaComponent
+  },
+  {
+    path:'examen-encontrado/:id',
+    component: ExamenEncontradoComponent
+  },
+
   {
     path:'',
-    redirectTo:'menu',
+    redirectTo:'consulta-examen',
     pathMatch: 'full'
   }
 

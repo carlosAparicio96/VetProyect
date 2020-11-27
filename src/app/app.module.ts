@@ -41,6 +41,13 @@ import { PasListaComponent } from './Otros/pas-lista/pas-lista.component';
 import { PasCrear2Component } from './Otros/pas-crear2/pas-crear2.component';
 import { SesListaComponent } from './Otros/ses-lista/ses-lista.component';
 import { SesCrear2Component } from './Otros/ses-crear2/ses-crear2.component';
+import { PasBuscadosComponent } from './Otros/pas-buscados/pas-buscados.component';
+import { ConListaComponent } from './Otros/con-lista/con-lista.component';
+import { ConsultaExamenComponent } from './Usuario/consulta-examen/consulta-examen.component';
+import { ExamenEncontradoComponent } from './Usuario/examen-encontrado/examen-encontrado.component';
+import { ServiciosComponent } from './Usuario/servicios/servicios.component';
+import { ContactoComponent } from './Usuario/contacto/contacto.component';
+import { RealizarConsultaComponent } from './Usuario/realizar-consulta/realizar-consulta.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +74,14 @@ import { SesCrear2Component } from './Otros/ses-crear2/ses-crear2.component';
     PasListaComponent,
     PasCrear2Component,
     SesListaComponent,
-    SesCrear2Component
+    SesCrear2Component,
+    PasBuscadosComponent,
+    ConListaComponent,
+    ConsultaExamenComponent,
+    ExamenEncontradoComponent,
+    ServiciosComponent,
+    ContactoComponent,
+    RealizarConsultaComponent
   ],
   entryComponents:[DialogComponent],
   imports: [

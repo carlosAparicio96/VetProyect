@@ -14,6 +14,7 @@ export class SesionesComponent implements OnInit {
   constructor(private _ac:ActivatedRoute,private router: Router, private vetService: VetService, private _location: Location, private fb: FormBuilder) { }
 
   sesion=[]
+  edit=[]
   paciente=[]
 
   eliminiar(){
@@ -26,6 +27,21 @@ export class SesionesComponent implements OnInit {
       }
     })
   }
+
+  editar(){
+    this.vetService.editarSesion(this.edit[0]).then(result => {
+      if(result==1){
+        alert('Sesion editada correctamente!!')
+        location.reload()
+      }else{
+        alert('Ocurrio un error')
+      }
+    })
+  }
+  cancelar(){
+    this._location.back()
+  }
+
 
   async ngOnInit(){
     await this._ac.paramMap.subscribe(params =>{
@@ -42,6 +58,11 @@ export class SesionesComponent implements OnInit {
           }
         })
       })
+
+      this.vetService.traerSesion(data).then((result3:any) =>{
+        this.edit.push(result3[0])
+      })
+
     })
   }
 
